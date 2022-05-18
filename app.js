@@ -21,11 +21,12 @@ schema
     .has().not().spaces()
     .has().symbols();
 
-mongoose.connect('mongodb://127.0.0.1:27017/restBook_db', {
+mongoose.connect('mongodb://localhost:27017/restBook_db', {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    family:4
 })
-let mongoClient = new mongodb.MongoClient('mongodb://127.0.0.1:27017/', {
+let mongoClient = new mongodb.MongoClient('mongodb://localhost:27017/', {
     useUnifiedTopology: true
 });
 let app= express()
