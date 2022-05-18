@@ -1,0 +1,135 @@
+<html>
+<head>
+    <title>Users</title>
+</head>
+<body onload="AdminChecker">
+<div class="main">
+    <div class="userTable">
+<h1>All Users</h1>
+    <table class="content-table">
+        <thead>
+<tr>
+<th>User</th>
+<th>City</th>
+<th>Email</th>
+<th>Delete</th>
+<th>Edit</th>
+</tr>
+        </thead>
+        <tbody><%users.forEach(users=>{%>
+    <tr>
+        <td id="username"><%=users.username %></td>
+        <td><%=users.city %></td>
+        <td><%=users.email %></td>
+        <td><a href="/user/delete/<%=users.username%>">delete</a></td>
+        <td><a href="/user/edit/<%=users.username%>">edit</a></td>
+
+    </tr>
+        <%})
+        %>
+        </tbody>
+    </table>
+    </div>
+    <div class="editBtn">
+        <button><a href="/user/add">Add user</a></button>
+        <button><a href="/logout">Log out</a></button>
+    </div>
+</div>
+</body>
+<style>
+    * {
+        font-family: sans-serif;
+    }
+    .userTable{
+        display: flex;
+        align-content: center;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+    .userTable h1{
+        font-size: 32px;
+        font-weight: 500;
+    }
+    .content-table {
+        border-collapse: collapse;
+        margin: 25px 0;
+        font-size: 0.9em;
+        min-width: 400px;
+        border-radius: 5px 5px 0 0;
+        overflow: hidden;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .content-table thead tr {
+        background-color: #009879;
+        color: #ffffff;
+        text-align: left;
+        font-weight: bold;
+    }
+.content-table a{
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    min-width: 400px;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+    .content-table th,
+    .content-table td {
+        padding: 12px 15px;
+    }
+
+    .content-table tbody tr {
+        border-bottom: 1px solid #dddddd;
+    }
+
+    .content-table tbody tr:nth-of-type(even) {
+        background-color: #f3f3f3;
+    }
+
+    .content-table tbody tr:last-of-type {
+        border-bottom: 2px solid #009879;
+    }
+
+    .content-table tbody tr.active-row {
+        font-weight: bold;
+        color: #009879;
+    }
+    .editBtn{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .editBtn button {
+        font-weight: 400;
+        font-size: 20px;
+        background-color: #009879;
+        color: white;
+        border-radius: 5px;
+        margin: 10px;
+    }
+    .editBtn button a{
+        font-weight: 400;
+        font-size: 20px;
+        color: white;
+        text-decoration: none;
+    }
+    .editBtn button:hover{
+        font-weight: 400;
+        font-size: 20px;
+        color: white;
+        text-decoration: none;
+        background-color:#006A54;
+    }
+    .content-table a{
+    text-decoration: none;
+    color: black;
+    background-color: #f3f3f3;
+        font-size: 0.9em;
+        min-width: 400px;
+        font-weight: 400;
+}
+</style>
+</html>
