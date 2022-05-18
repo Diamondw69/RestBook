@@ -25,7 +25,7 @@ mongoose.connect('mongodb://localhost:27017/restBook_db', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
-let mongoClient = new mongodb.MongoClient('mongodb://localhost:27017/', {
+let mongoClient = new mongodb.MongoClient('mongodb://0.0.0.0:27017/', {
     useUnifiedTopology: true
 });
 let app= express()
