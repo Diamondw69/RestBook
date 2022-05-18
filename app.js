@@ -21,7 +21,7 @@ schema
     .has().not().spaces()
     .has().symbols();
 
-mongoose.connect('mongodb://localhost:27017/restBook_db', {
+mongoose.connect('mongodb://0.0.0.0:27017/restBook_db', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
