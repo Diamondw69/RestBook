@@ -9,7 +9,7 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const passwordValidator = require('password-validator');
 const port=process.env.PORT ||3000;
-
+const uri = process.env.MONGODB_URI;
 let mongodb=require ('mongodb');
 let isAuth = false;
 let isAdmin = false;
@@ -22,12 +22,12 @@ schema
     .has().not().spaces()
     .has().symbols();
 
-mongoose.connect('mongodb://localhost:27017/restBook_db', {
+mongoose.connect(uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     family:4
 })
-let mongoClient = new mongodb.MongoClient('mongodb://localhost:27017/', {
+let mongoClient = new mongodb.MongoClient(uri, {
     useUnifiedTopology: true
 });
 let app= express()
