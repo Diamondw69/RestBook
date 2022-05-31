@@ -1,0 +1,143 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Table</title>
+</head>
+<body >
+<div class="main" >
+    <div class="userForm">
+        <form method="POST" action="">
+            <p>Book a table number <%=users.id%></p>
+            <div class="form-group">
+                <input type="text" class="form-control" id="id" aria-describedby="emailHelp" name="id"  value="<%=users.id%>">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="name" placeholder="Your Name">
+            </div>
+            <div class="form-group">
+                <input type="tel" class="form-control" name="phone" placeholder="Your Phone">
+            </div>
+            <div class="form-group">
+                <input type="datetime-local" class="form-control" name="date">
+            </div>
+            <button type="submit" class="btn btn-primary btn-block" >Book A Table</button>
+        </form>
+    </div>
+</div>
+</div>
+</body>
+<style>
+    body{
+        padding:0;
+        margin: 0;
+    }
+    .main{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+    .container-book{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row;
+        height: 100%;
+    }
+    .userForm{
+        font-size: 32px;
+        font-weight: 500;
+        display: flex;
+        align-content: center;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+
+    }
+    .userForm form {
+        border-radius: 10px;
+        display: flex;
+        align-content: center;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        background-color: white;
+        padding: 40px 40px 35px;
+        margin: 40px 40px 20px;
+        box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.15);
+    }
+    .userForm form input{
+
+        border-radius: 5px;
+        padding: 5px 5px 5px 5px;
+        margin: 15px 15px 5px;
+    }
+    .userForm form p{
+        font-weight: 400;
+        font-size:32px;
+    }
+    .userForm form button{
+        border-radius: 5px;
+        padding: 5px 5px 5px 5px;
+    }
+    .userForm form button:hover{
+        background-color: gray;
+        color: white;
+    }
+    .seat{
+        display: flex;
+        flex-wrap: wrap;
+        border-radius: 15px;
+        background-color:blue;
+        height: 32px;
+        width: 32px;
+    }
+    .seat:hover{
+        background-color: #f3f3f3;
+    }
+    .selected{
+        background-color: green;
+    }
+    .selected:hover{
+        background-color: darkgreen;
+    }
+    .sold{
+        background-color: black;
+    }
+    .choose{
+        height: 320px;
+        width: 560px;
+        background-image: url("../ttable.png");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.15);
+        margin-left: 5px;
+        background-color: white;
+    }
+    .container-book{
+        background-color: #009879;
+        background-repeat: no-repeat;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    }
+</style>
+<script>
+    let isTouched=0;
+    function change(id) {
+        let seats=document.getElementsByClassName('seat');
+        let arr=Array.from(seats);
+        let seat;
+        for(let i=0;i<arr.length;i++){
+            if(i===id){
+                seat=arr[i];
+            }
+        }
+        if (isTouched === 0) {
+            seat.classList.add('selected')
+            isTouched=1;
+        }else{
+            seat.classList.remove('selected');
+            isTouched=0;
+        }
+    }
+</script>
+</html>
