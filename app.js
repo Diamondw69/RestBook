@@ -170,9 +170,35 @@ mongoClient.connect(async function(error, mongo) {
             let resuk= await coll.updateOne({username: user.username}, {$set: user});
             res.redirect('/users');
         });
+        app.get('/seats',async function(req, res) {
+            let db = mongo.db('restBook_db');
+            let coll = db.collection('seats');
+            let users= await coll.find().sort({id:1}).toArray();
+            res.render('table',{users:users});
+        });
+        app.post('/seats', async function(req, res) {
+            let db = mongo.db('restBook_db');
+            let coll = db.collection('orders');
+            let user=req.body;
+            let result= await coll.insertOne(user);
+            res.redirect('/');
+        });
+        app.get('seats/change/:id',async function(req,res){
+            let db = mongo.db('restBook_db');
+            let coll = db.collection('seats');
+            let name= req.params.id;
+            let users= await coll.findOne({id:name});
+            res.render('change',{users:users});
+        });
+        app.post('seats/change/:id',async function(req,res){
+            let db = mongo.db('restBook_db');
+            let coll = db.collection('seats');
+            let a=req.body;
+            let users= await coll.updateOne({id:a.id},{$set:{class:"seat sold"}});
+            res.redirect('/');
+        });
         let db = mongo.db('restBook_db');
         let coll = db.collection('users');
-
     } else {
         console.error(error);
     }
